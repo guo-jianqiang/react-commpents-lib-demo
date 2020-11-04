@@ -1,0 +1,55 @@
+{
+  "name": "rollup-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook",
+    "test": "jest",
+    "build": "rimraf dist && mkdirp dist && rollup -c"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.8.4"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
+    "@storybook/addons": "^6.0.28",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.28",
+    "@testing-library/react": "^11.1.1",
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.15",
+    "@types/react": "^16.9.55",
+    "@types/react-test-renderer": "^16.9.3",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
+    "mkdirp": "^1.0.4",
+    "react-scripts": "^4.0.0",
+    "react-test-renderer": "^17.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.33.1",
+    "rollup-plugin-less": "^1.1.2",
+    "rollup-plugin-less-modules": "^0.1.11",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "ts-jest": "^26.4.3",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
