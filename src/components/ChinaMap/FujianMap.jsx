@@ -54,7 +54,7 @@ const FujianMap = () => {
           .attr('font-size', '14px')
           .attr('x', proPeking[0])
           .attr('y', proPeking[1])
-          .attr('transform', 'translate(-50%,-50%)')
+          .attr('transform', 'translate(-15 -10)')
       })
       .attr("d", path)
       .attr("stroke", "#000")
@@ -136,32 +136,32 @@ const FujianMap = () => {
           .attr('class', `line-path${i}`)
           .attr('d', () => transPath(pointData[i]));
 
-        // const defs = svg.append('defs')
-        // const radialGradient = defs.append('radialGradient')
-        //   .attr('id', 'grad')
-        //   .attr('r', 0.5)
-        // radialGradient.append('stop')
-        //   .attr('offset', '0%')
-        //   .attr('stop-color', '#000')
-        //   .attr('stop-opacity', '1')
-        // radialGradient.append('stop')
-        //   .attr('offset', '100%')
-        //   .attr('stop-color', '#000')
-        //   .attr('stop-opacity', '0')
-        //
-        // defs.append('mask')
-        //   .attr('id', `mask${i}`)
-        //   .append('circle')
-        //   .attr('r', 10)
-        //   .attr('fill', 'url(#grad)')
+        // 定义线性渐变
+        const flag = item.from.coordinate[0] > item.to.coordinate[0] // 起点位置经度大不终点
+        const defs = svg.append('defs')
+        const radialGradient = defs.append('linearGradient')
+          .attr('id', `grad${i}`)
+          .attr('r', 0.5)
+        radialGradient.append('stop')
+          .attr('offset', '10%')
+          .attr('stop-color', '#FFD700')
+          .attr('stop-opacity', flag ? '1' : '0')
+        radialGradient.append('stop')
+          .attr('offset', '80%')
+          .attr('stop-color', '#FFD700')
+          .attr('stop-opacity', flag ? '0' : '1')
+
+        const circle = svg.append('circle')
+          .attr('r', '2')
+          .attr('class', 'line-circle')
+          .attr('fill', 'url(#RadialGradient)')
 
         // 定义飞线
         const line = svg.append('path')
           .attr('class', 'lineGroups')
-          .attr('stroke','#FFCE00')
+          .attr('stroke',`url(#grad${i})`)
           .attr('stroke-width',3)
           .attr('fill','none')
-          // .attr('mask', `url(#mask${i})`)
         transition()
         // 贝塞尔曲线 循环过渡
         function transition () {
@@ -171,6 +171,7 @@ const FujianMap = () => {
             .duration(2000)
             .delay(1200)
             .attrTween('d', function () {
+              circle.attr('opacity', 1)
               const $path = d3.select(`.line-path${i}`).node();
               let l
               try {
@@ -190,6 +191,7 @@ const FujianMap = () => {
                 }
                 const x = ((1 - t) * x1) + (t * x2);
                 const y = ((1 - t) * y1) + (t * y2);
+                circle.attr('cx', p.x).attr('cy', p.y)
                 // d3.select(`#mask${i}`).attr('x', p.x).attr('y', p.y);  // 蒙版坐标
                 return `M${x1},${y1} Q${x},${y} ${p.x},${p.y}`;
               };
@@ -198,6 +200,7 @@ const FujianMap = () => {
             .duration(2000)
             // .style('opacity', 0)
             .on("end", function () {
+              circle.attr('opacity', 0)
               if (this) {
                 transition()
               }
@@ -219,7 +222,14 @@ const FujianMap = () => {
     }
   }, [])
 
-  return (<svg className='chart'></svg>)
+  return (<svg className='chart'>
+    <defs>
+      <radialGradient id="RadialGradient">
+        <stop offset="0%" stop-color="#fff"/>
+        <stop offset="100%" stop-color="#fff" opacity='0'/>
+      </radialGradient>
+    </defs>
+  </svg>)
 }
 
 export default FujianMap
