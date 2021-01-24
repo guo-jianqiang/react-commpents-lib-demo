@@ -1,82 +1,48 @@
-export default [
+/** @format */
+
+export const LOGIN_PATH = '/login'
+
+export const ACCOUNT_INFO = '__account_info__'
+
+export const SYSTEM_CONFIG = '__system_config__'
+
+export const SYSTEM_CONFIG_DRAWER_WIDTH = 256
+
+export interface themeColorsInterface {
+    id: number;
+    color: string;
+    name: string;
+}
+
+export const themeColors: Array<themeColorsInterface> = [
     {
-        from: {
-            "name": "宁德",
-            "coordinate": [119.527082,26.65924]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
+        id: 1,
+        color: 'rgb(24, 144, 255)',
+        name: '拂晓蓝(默认)',
     },
     {
-        from: {
-            "name": "南平",
-            "coordinate": [118.178459,26.635627]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
+        id: 2,
+        color: 'rgb(245, 34, 45)',
+        name: '薄暮',
     },
     {
-        from: {
-            "name": "厦门",
-            "coordinate": [118.11022,24.490474]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
+        id: 3,
+        color: 'rgb(250, 84, 28)',
+        name: '火山',
     },
     {
-        from: {
-            "name": "三明",
-            "coordinate": [117.635001,26.265444]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
+        id: 4,
+        color: 'rgb(19, 194, 194)',
+        name: '明青',
     },
     {
-        from: {
-            "name": "莆田",
-            "coordinate": [119.007558,25.431011]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
+        id: 5,
+        color: 'rgb(82, 196, 26)',
+        name: '激光绿',
     },
     {
-        from: {
-            "name": "龙岩",
-            "coordinate": [117.02978,25.091603]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
+        id: 6,
+        color: 'rgb(114, 46, 209)',
+        name: '酱紫',
     },
-    {
-        from: {
-            "name": "漳州",
-            "coordinate": [117.661801,24.510897]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
-    },
-    {
-        from: {
-            "name": "泉州",
-            "coordinate": [118.589421,24.908853]
-        },
-        to: {
-            "name": "福州",
-            "coordinate": [119.306239,26.075302]
-        }
-    }
 ]
