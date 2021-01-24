@@ -89,7 +89,7 @@ export interface LayoutProps {
   onClickDrop: () => void;
 }
 ```
-####非缓存使用
+#### 非缓存使用
 ```tsx
 const myHistory = createHashHistory()
 
@@ -159,7 +159,7 @@ const Routes = () => {
   )
 }
 ```
-####缓存路由
+#### 缓存路由
 ```tsx
 // yarn add react-router-cache-route or npm install react-router-cache-route
 import {CacheRoute, CacheSwitch, refreshByCacheKey, dropByCacheKey} from 'react-router-cache-route'
@@ -196,5 +196,5 @@ const Routes = () => {
   )
 }
 ```
-###面包屑
+### 面包屑
 提供页面层级关系。

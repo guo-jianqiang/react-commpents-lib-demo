@@ -1,6 +1,6 @@
 {
   "name": "antd-deer-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "module": "dist/index.esm.js",
   "main": "dist/index.js",
